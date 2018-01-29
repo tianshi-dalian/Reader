@@ -15,7 +15,7 @@ import com.justwayward.reader.view.TagGroup;
 import java.lang.Override;
 
 public class SearchActivity_ViewBinding<T extends SearchActivity> extends BaseRVActivity_ViewBinding<T> {
-  private View view2131231012;
+  private View view2131296586;
 
   @UiThread
   public SearchActivity_ViewBinding(final T target, View source) {
@@ -29,7 +29,7 @@ public class SearchActivity_ViewBinding<T extends SearchActivity> extends BaseRV
     target.rlHistory = Utils.findRequiredViewAsType(source, R.id.rlHistory, "field 'rlHistory'", RelativeLayout.class);
     view = Utils.findRequiredView(source, R.id.tvClear, "field 'tvClear' and method 'clearSearchHistory'");
     target.tvClear = Utils.castView(view, R.id.tvClear, "field 'tvClear'", TextView.class);
-    view2131231012 = view;
+    view2131296586 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -52,7 +52,7 @@ public class SearchActivity_ViewBinding<T extends SearchActivity> extends BaseRV
     target.tvClear = null;
     target.lvSearchHistory = null;
 
-    view2131231012.setOnClickListener(null);
-    view2131231012 = null;
+    view2131296586.setOnClickListener(null);
+    view2131296586 = null;
   }
 }

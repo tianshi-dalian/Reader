@@ -16,7 +16,7 @@ import java.lang.Override;
 public class ReadEPubActivity_ViewBinding<T extends ReadEPubActivity> implements Unbinder {
   protected T target;
 
-  private View view2131230979;
+  private View view2131296548;
 
   @UiThread
   public ReadEPubActivity_ViewBinding(final T target, View source) {
@@ -26,7 +26,7 @@ public class ReadEPubActivity_ViewBinding<T extends ReadEPubActivity> implements
     target.viewpager = Utils.findRequiredViewAsType(source, R.id.epubViewPager, "field 'viewpager'", DirectionalViewpager.class);
     view = Utils.findRequiredView(source, R.id.toolbar_menu, "field 'ivMenu' and method 'showMenu'");
     target.ivMenu = view;
-    view2131230979 = view;
+    view2131296548 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -46,8 +46,8 @@ public class ReadEPubActivity_ViewBinding<T extends ReadEPubActivity> implements
     target.ivMenu = null;
     target.tvTitle = null;
 
-    view2131230979.setOnClickListener(null);
-    view2131230979 = null;
+    view2131296548.setOnClickListener(null);
+    view2131296548 = null;
 
     this.target = null;
   }

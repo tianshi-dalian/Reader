@@ -894,9 +894,6 @@ public class ReadActivity extends BaseActivity implements BookReadContract.View 
         if (mPresenter != null) {
             mPresenter.detachView();
         }
-
-        // 观察内存泄漏情况
-        ReaderApplication.getRefWatcher(this).watch(this);
     }
 
     private class ReadListener implements OnReadStateChangeListener {

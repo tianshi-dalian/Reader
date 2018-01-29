@@ -16,13 +16,13 @@ import java.lang.Override;
 public class SettingActivity_ViewBinding<T extends SettingActivity> implements Unbinder {
   protected T target;
 
-  private View view2131230752;
+  private View view2131296303;
 
-  private View view2131230919;
+  private View view2131296478;
 
-  private View view2131230799;
+  private View view2131296352;
 
-  private View view2131230768;
+  private View view2131296319;
 
   @UiThread
   public SettingActivity_ViewBinding(final T target, View source) {
@@ -34,7 +34,7 @@ public class SettingActivity_ViewBinding<T extends SettingActivity> implements U
     target.mTvCacheSize = Utils.findRequiredViewAsType(source, R.id.tvCacheSize, "field 'mTvCacheSize'", TextView.class);
     target.noneCoverCompat = Utils.findRequiredViewAsType(source, R.id.noneCoverCompat, "field 'noneCoverCompat'", SwitchCompat.class);
     view = Utils.findRequiredView(source, R.id.bookshelfSort, "method 'onClickBookShelfSort'");
-    view2131230752 = view;
+    view2131296303 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -42,7 +42,7 @@ public class SettingActivity_ViewBinding<T extends SettingActivity> implements U
       }
     });
     view = Utils.findRequiredView(source, R.id.rlFlipStyle, "method 'onClickFlipStyle'");
-    view2131230919 = view;
+    view2131296478 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -50,7 +50,7 @@ public class SettingActivity_ViewBinding<T extends SettingActivity> implements U
       }
     });
     view = Utils.findRequiredView(source, R.id.feedBack, "method 'feedBack'");
-    view2131230799 = view;
+    view2131296352 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -58,7 +58,7 @@ public class SettingActivity_ViewBinding<T extends SettingActivity> implements U
       }
     });
     view = Utils.findRequiredView(source, R.id.cleanCache, "method 'onClickCleanCache'");
-    view2131230768 = view;
+    view2131296319 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -78,14 +78,14 @@ public class SettingActivity_ViewBinding<T extends SettingActivity> implements U
     target.mTvCacheSize = null;
     target.noneCoverCompat = null;
 
-    view2131230752.setOnClickListener(null);
-    view2131230752 = null;
-    view2131230919.setOnClickListener(null);
-    view2131230919 = null;
-    view2131230799.setOnClickListener(null);
-    view2131230799 = null;
-    view2131230768.setOnClickListener(null);
-    view2131230768 = null;
+    view2131296303.setOnClickListener(null);
+    view2131296303 = null;
+    view2131296478.setOnClickListener(null);
+    view2131296478 = null;
+    view2131296352.setOnClickListener(null);
+    view2131296352 = null;
+    view2131296319.setOnClickListener(null);
+    view2131296319 = null;
 
     this.target = null;
   }

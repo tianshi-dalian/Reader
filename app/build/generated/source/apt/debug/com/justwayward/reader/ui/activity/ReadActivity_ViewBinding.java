@@ -23,37 +23,37 @@ import java.lang.Override;
 public class ReadActivity_ViewBinding<T extends ReadActivity> implements Unbinder {
   protected T target;
 
-  private View view2131230824;
+  private View view2131296381;
 
-  private View view2131231000;
+  private View view2131296574;
 
-  private View view2131230996;
+  private View view2131296570;
 
-  private View view2131230998;
+  private View view2131296572;
 
-  private View view2131231002;
+  private View view2131296576;
 
-  private View view2131230999;
+  private View view2131296573;
 
-  private View view2131231001;
+  private View view2131296575;
 
-  private View view2131230997;
+  private View view2131296571;
 
-  private View view2131231003;
+  private View view2131296577;
 
-  private View view2131230827;
+  private View view2131296384;
 
-  private View view2131230828;
+  private View view2131296385;
 
-  private View view2131231024;
+  private View view2131296598;
 
-  private View view2131231025;
+  private View view2131296599;
 
-  private View view2131230985;
+  private View view2131296559;
 
-  private View view2131230995;
+  private View view2131296569;
 
-  private View view2131231012;
+  private View view2131296586;
 
   @UiThread
   public ReadActivity_ViewBinding(final T target, View source) {
@@ -62,7 +62,7 @@ public class ReadActivity_ViewBinding<T extends ReadActivity> implements Unbinde
     View view;
     view = Utils.findRequiredView(source, R.id.ivBack, "field 'mIvBack' and method 'onClickBack'");
     target.mIvBack = Utils.castView(view, R.id.ivBack, "field 'mIvBack'", ImageView.class);
-    view2131230824 = view;
+    view2131296381 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -71,7 +71,7 @@ public class ReadActivity_ViewBinding<T extends ReadActivity> implements Unbinde
     });
     view = Utils.findRequiredView(source, R.id.tvBookReadReading, "field 'mTvBookReadReading' and method 'readBook'");
     target.mTvBookReadReading = Utils.castView(view, R.id.tvBookReadReading, "field 'mTvBookReadReading'", TextView.class);
-    view2131231000 = view;
+    view2131296574 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -80,7 +80,7 @@ public class ReadActivity_ViewBinding<T extends ReadActivity> implements Unbinde
     });
     view = Utils.findRequiredView(source, R.id.tvBookReadCommunity, "field 'mTvBookReadCommunity' and method 'onClickCommunity'");
     target.mTvBookReadCommunity = Utils.castView(view, R.id.tvBookReadCommunity, "field 'mTvBookReadCommunity'", TextView.class);
-    view2131230996 = view;
+    view2131296570 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -89,7 +89,7 @@ public class ReadActivity_ViewBinding<T extends ReadActivity> implements Unbinde
     });
     view = Utils.findRequiredView(source, R.id.tvBookReadIntroduce, "field 'mTvBookReadChangeSource' and method 'onClickIntroduce'");
     target.mTvBookReadChangeSource = Utils.castView(view, R.id.tvBookReadIntroduce, "field 'mTvBookReadChangeSource'", TextView.class);
-    view2131230998 = view;
+    view2131296572 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -98,7 +98,7 @@ public class ReadActivity_ViewBinding<T extends ReadActivity> implements Unbinde
     });
     view = Utils.findRequiredView(source, R.id.tvBookReadSource, "field 'mTvBookReadSource' and method 'onClickSource'");
     target.mTvBookReadSource = Utils.castView(view, R.id.tvBookReadSource, "field 'mTvBookReadSource'", TextView.class);
-    view2131231002 = view;
+    view2131296576 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -110,7 +110,7 @@ public class ReadActivity_ViewBinding<T extends ReadActivity> implements Unbinde
     target.mTvBookReadTocTitle = Utils.findRequiredViewAsType(source, R.id.tvBookReadTocTitle, "field 'mTvBookReadTocTitle'", TextView.class);
     view = Utils.findRequiredView(source, R.id.tvBookReadMode, "field 'mTvBookReadMode' and method 'onClickChangeMode'");
     target.mTvBookReadMode = Utils.castView(view, R.id.tvBookReadMode, "field 'mTvBookReadMode'", TextView.class);
-    view2131230999 = view;
+    view2131296573 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -119,7 +119,7 @@ public class ReadActivity_ViewBinding<T extends ReadActivity> implements Unbinde
     });
     view = Utils.findRequiredView(source, R.id.tvBookReadSettings, "field 'mTvBookReadSettings' and method 'setting'");
     target.mTvBookReadSettings = Utils.castView(view, R.id.tvBookReadSettings, "field 'mTvBookReadSettings'", TextView.class);
-    view2131231001 = view;
+    view2131296575 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -128,7 +128,7 @@ public class ReadActivity_ViewBinding<T extends ReadActivity> implements Unbinde
     });
     view = Utils.findRequiredView(source, R.id.tvBookReadDownload, "field 'mTvBookReadDownload' and method 'downloadBook'");
     target.mTvBookReadDownload = Utils.castView(view, R.id.tvBookReadDownload, "field 'mTvBookReadDownload'", TextView.class);
-    view2131230997 = view;
+    view2131296571 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -137,7 +137,7 @@ public class ReadActivity_ViewBinding<T extends ReadActivity> implements Unbinde
     });
     view = Utils.findRequiredView(source, R.id.tvBookReadToc, "field 'mTvBookReadToc' and method 'onClickToc'");
     target.mTvBookReadToc = Utils.castView(view, R.id.tvBookReadToc, "field 'mTvBookReadToc'", TextView.class);
-    view2131231003 = view;
+    view2131296577 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -150,7 +150,7 @@ public class ReadActivity_ViewBinding<T extends ReadActivity> implements Unbinde
     target.rlReadAaSet = Utils.findRequiredViewAsType(source, R.id.rlReadAaSet, "field 'rlReadAaSet'", LinearLayout.class);
     view = Utils.findRequiredView(source, R.id.ivBrightnessMinus, "field 'ivBrightnessMinus' and method 'brightnessMinus'");
     target.ivBrightnessMinus = Utils.castView(view, R.id.ivBrightnessMinus, "field 'ivBrightnessMinus'", ImageView.class);
-    view2131230827 = view;
+    view2131296384 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -160,7 +160,7 @@ public class ReadActivity_ViewBinding<T extends ReadActivity> implements Unbinde
     target.seekbarLightness = Utils.findRequiredViewAsType(source, R.id.seekbarLightness, "field 'seekbarLightness'", SeekBar.class);
     view = Utils.findRequiredView(source, R.id.ivBrightnessPlus, "field 'ivBrightnessPlus' and method 'brightnessPlus'");
     target.ivBrightnessPlus = Utils.castView(view, R.id.ivBrightnessPlus, "field 'ivBrightnessPlus'", ImageView.class);
-    view2131230828 = view;
+    view2131296385 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -169,7 +169,7 @@ public class ReadActivity_ViewBinding<T extends ReadActivity> implements Unbinde
     });
     view = Utils.findRequiredView(source, R.id.tvFontsizeMinus, "field 'tvFontsizeMinus' and method 'fontsizeMinus'");
     target.tvFontsizeMinus = Utils.castView(view, R.id.tvFontsizeMinus, "field 'tvFontsizeMinus'", TextView.class);
-    view2131231024 = view;
+    view2131296598 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -179,7 +179,7 @@ public class ReadActivity_ViewBinding<T extends ReadActivity> implements Unbinde
     target.seekbarFontSize = Utils.findRequiredViewAsType(source, R.id.seekbarFontSize, "field 'seekbarFontSize'", SeekBar.class);
     view = Utils.findRequiredView(source, R.id.tvFontsizePlus, "field 'tvFontsizePlus' and method 'fontsizePlus'");
     target.tvFontsizePlus = Utils.castView(view, R.id.tvFontsizePlus, "field 'tvFontsizePlus'", TextView.class);
-    view2131231025 = view;
+    view2131296599 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -189,7 +189,7 @@ public class ReadActivity_ViewBinding<T extends ReadActivity> implements Unbinde
     target.rlReadMark = Utils.findRequiredViewAsType(source, R.id.rlReadMark, "field 'rlReadMark'", LinearLayout.class);
     view = Utils.findRequiredView(source, R.id.tvAddMark, "field 'tvAddMark' and method 'addBookMark'");
     target.tvAddMark = Utils.castView(view, R.id.tvAddMark, "field 'tvAddMark'", TextView.class);
-    view2131230985 = view;
+    view2131296559 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -201,7 +201,7 @@ public class ReadActivity_ViewBinding<T extends ReadActivity> implements Unbinde
     target.cbAutoBrightness = Utils.findRequiredViewAsType(source, R.id.cbAutoBrightness, "field 'cbAutoBrightness'", CheckBox.class);
     target.gvTheme = Utils.findRequiredViewAsType(source, R.id.gvTheme, "field 'gvTheme'", GridView.class);
     view = Utils.findRequiredView(source, R.id.tvBookMark, "method 'onClickMark'");
-    view2131230995 = view;
+    view2131296569 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -209,7 +209,7 @@ public class ReadActivity_ViewBinding<T extends ReadActivity> implements Unbinde
       }
     });
     view = Utils.findRequiredView(source, R.id.tvClear, "method 'clearBookMark'");
-    view2131231012 = view;
+    view2131296586 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -253,38 +253,38 @@ public class ReadActivity_ViewBinding<T extends ReadActivity> implements Unbinde
     target.cbAutoBrightness = null;
     target.gvTheme = null;
 
-    view2131230824.setOnClickListener(null);
-    view2131230824 = null;
-    view2131231000.setOnClickListener(null);
-    view2131231000 = null;
-    view2131230996.setOnClickListener(null);
-    view2131230996 = null;
-    view2131230998.setOnClickListener(null);
-    view2131230998 = null;
-    view2131231002.setOnClickListener(null);
-    view2131231002 = null;
-    view2131230999.setOnClickListener(null);
-    view2131230999 = null;
-    view2131231001.setOnClickListener(null);
-    view2131231001 = null;
-    view2131230997.setOnClickListener(null);
-    view2131230997 = null;
-    view2131231003.setOnClickListener(null);
-    view2131231003 = null;
-    view2131230827.setOnClickListener(null);
-    view2131230827 = null;
-    view2131230828.setOnClickListener(null);
-    view2131230828 = null;
-    view2131231024.setOnClickListener(null);
-    view2131231024 = null;
-    view2131231025.setOnClickListener(null);
-    view2131231025 = null;
-    view2131230985.setOnClickListener(null);
-    view2131230985 = null;
-    view2131230995.setOnClickListener(null);
-    view2131230995 = null;
-    view2131231012.setOnClickListener(null);
-    view2131231012 = null;
+    view2131296381.setOnClickListener(null);
+    view2131296381 = null;
+    view2131296574.setOnClickListener(null);
+    view2131296574 = null;
+    view2131296570.setOnClickListener(null);
+    view2131296570 = null;
+    view2131296572.setOnClickListener(null);
+    view2131296572 = null;
+    view2131296576.setOnClickListener(null);
+    view2131296576 = null;
+    view2131296573.setOnClickListener(null);
+    view2131296573 = null;
+    view2131296575.setOnClickListener(null);
+    view2131296575 = null;
+    view2131296571.setOnClickListener(null);
+    view2131296571 = null;
+    view2131296577.setOnClickListener(null);
+    view2131296577 = null;
+    view2131296384.setOnClickListener(null);
+    view2131296384 = null;
+    view2131296385.setOnClickListener(null);
+    view2131296385 = null;
+    view2131296598.setOnClickListener(null);
+    view2131296598 = null;
+    view2131296599.setOnClickListener(null);
+    view2131296599 = null;
+    view2131296559.setOnClickListener(null);
+    view2131296559 = null;
+    view2131296569.setOnClickListener(null);
+    view2131296569 = null;
+    view2131296586.setOnClickListener(null);
+    view2131296586 = null;
 
     this.target = null;
   }

@@ -1,4 +1,4 @@
-#Sun Jan 28 23:08:27 CST 2018
-base.0=D\:\\git\\BookReader\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\23
+#Mon Jan 29 10:22:09 CST 2018
+base.0=D\:\\git\\Reader\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\3
 path.0=classes.dex
 renamed.0=classes.dex

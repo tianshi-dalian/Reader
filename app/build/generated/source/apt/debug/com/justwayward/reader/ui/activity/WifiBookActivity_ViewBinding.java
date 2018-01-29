@@ -15,7 +15,7 @@ import java.lang.Override;
 public class WifiBookActivity_ViewBinding<T extends WifiBookActivity> implements Unbinder {
   protected T target;
 
-  private View view2131231048;
+  private View view2131296622;
 
   @UiThread
   public WifiBookActivity_ViewBinding(final T target, View source) {
@@ -26,7 +26,7 @@ public class WifiBookActivity_ViewBinding<T extends WifiBookActivity> implements
     target.mTvWifiIp = Utils.findRequiredViewAsType(source, R.id.mTvWifiIp, "field 'mTvWifiIp'", TextView.class);
     view = Utils.findRequiredView(source, R.id.tvRetry, "field 'tvRetry' and method 'retry'");
     target.tvRetry = Utils.castView(view, R.id.tvRetry, "field 'tvRetry'", TextView.class);
-    view2131231048 = view;
+    view2131296622 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -45,8 +45,8 @@ public class WifiBookActivity_ViewBinding<T extends WifiBookActivity> implements
     target.mTvWifiIp = null;
     target.tvRetry = null;
 
-    view2131231048.setOnClickListener(null);
-    view2131231048 = null;
+    view2131296622.setOnClickListener(null);
+    view2131296622 = null;
 
     this.target = null;
   }

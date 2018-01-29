@@ -12,9 +12,9 @@ import com.justwayward.reader.base.BaseRVFragment_ViewBinding;
 import java.lang.Override;
 
 public class RecommendFragment_ViewBinding<T extends RecommendFragment> extends BaseRVFragment_ViewBinding<T> {
-  private View view2131231055;
+  private View view2131296629;
 
-  private View view2131231018;
+  private View view2131296592;
 
   @UiThread
   public RecommendFragment_ViewBinding(final T target, View source) {
@@ -24,7 +24,7 @@ public class RecommendFragment_ViewBinding<T extends RecommendFragment> extends 
     target.llBatchManagement = Utils.findRequiredViewAsType(source, R.id.llBatchManagement, "field 'llBatchManagement'", LinearLayout.class);
     view = Utils.findRequiredView(source, R.id.tvSelectAll, "field 'tvSelectAll' and method 'selectAll'");
     target.tvSelectAll = Utils.castView(view, R.id.tvSelectAll, "field 'tvSelectAll'", TextView.class);
-    view2131231055 = view;
+    view2131296629 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -33,7 +33,7 @@ public class RecommendFragment_ViewBinding<T extends RecommendFragment> extends 
     });
     view = Utils.findRequiredView(source, R.id.tvDelete, "field 'tvDelete' and method 'delete'");
     target.tvDelete = Utils.castView(view, R.id.tvDelete, "field 'tvDelete'", TextView.class);
-    view2131231018 = view;
+    view2131296592 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -51,9 +51,9 @@ public class RecommendFragment_ViewBinding<T extends RecommendFragment> extends 
     target.tvSelectAll = null;
     target.tvDelete = null;
 
-    view2131231055.setOnClickListener(null);
-    view2131231055 = null;
-    view2131231018.setOnClickListener(null);
-    view2131231018 = null;
+    view2131296629.setOnClickListener(null);
+    view2131296629 = null;
+    view2131296592.setOnClickListener(null);
+    view2131296592 = null;
   }
 }
