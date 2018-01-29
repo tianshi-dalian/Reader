@@ -14,10 +14,10 @@ android {
 
     signingConfigs {
         release {
-            storeFile file(KEYSTORE_FILE)
-            storePassword KEYSTORE_PWD
-            keyAlias KEY_ALIAS
-            keyPassword KEY_PWD
+            storeFile file('D:/git/Reader/sign.jks')
+            storePassword '123456'
+            keyAlias 'bookreader'
+            keyPassword '123456'
         }
     }
 
@@ -61,7 +61,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.2.0'
     // Annotation
     implementation 'com.google.dagger:dagger:2.12'
-//apt 'com.google.dagger:dagger-compiler:2.12'
+    //apt 'com.google.dagger:dagger-compiler:2.12'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.12'
     provided 'org.glassfish:javax.annotation:10.0-b28'
     implementation 'com.jakewharton:butterknife:8.4.0'

@@ -26,23 +26,32 @@
  */
 package com.justwayward.reader.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.view.menu.MenuBuilder;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.justwayward.reader.R;
 import com.justwayward.reader.base.BaseActivity;
 import com.justwayward.reader.base.Constant;
+import com.justwayward.reader.bean.QQInformationBean;
 import com.justwayward.reader.bean.user.TencentLoginResult;
 import com.justwayward.reader.component.AppComponent;
 import com.justwayward.reader.component.DaggerMainComponent;
@@ -56,15 +65,20 @@ import com.justwayward.reader.ui.fragment.RecommendFragment;
 import com.justwayward.reader.ui.presenter.MainActivityPresenter;
 import com.justwayward.reader.utils.LogUtils;
 import com.justwayward.reader.utils.SharedPreferencesUtil;
+import com.justwayward.reader.utils.StringUtils;
 import com.justwayward.reader.utils.ToastUtils;
+import com.justwayward.reader.utils.Util;
 import com.justwayward.reader.view.GenderPopupWindow;
 import com.justwayward.reader.view.LoginPopupWindow;
 import com.justwayward.reader.view.RVPIndicator;
+import com.tencent.connect.UserInfo;
+import com.tencent.connect.auth.QQToken;
 import com.tencent.connect.common.Constants;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Method;
@@ -75,6 +89,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * https://github.com/JustWayward/BookReader
@@ -85,6 +100,8 @@ public class MainActivity extends BaseActivity implements MainContract.View, Log
     RVPIndicator mIndicator;
     @BindView(R.id.viewpager)
     ViewPager mViewPager;
+    @BindView(R.id.common_toolbar)
+    Toolbar commonToolbar;
 
     private List<Fragment> mTabContents;
     private FragmentPagerAdapter mAdapter;
@@ -102,6 +119,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, Log
     public static Tencent mTencent;
     public IUiListener loginListener;
     private GenderPopupWindow genderPopupWindow;
+    MenuItem menuItem;
 
     @Override
     public int getLayoutId() {
@@ -117,9 +135,26 @@ public class MainActivity extends BaseActivity implements MainContract.View, Log
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        try {
+            if (null != SharedPreferencesUtil.getInstance().getString(Constant.NAME) && !"".equals(SharedPreferencesUtil.getInstance().getString(Constant.NAME))) {
+                menuItem.setTitle(SharedPreferencesUtil.getInstance().getString(Constant.NAME));
+
+            } else {
+                menuItem.setTitle("请登录");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
     public void initToolBar() {
         mCommonToolbar.setLogo(R.mipmap.ic_launcher);
-        setTitle("");
+        setTitle("读书吧");
+
     }
 
     public void pullSyncBookShelf() {
@@ -191,6 +226,13 @@ public class MainActivity extends BaseActivity implements MainContract.View, Log
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        menuItem = menu.findItem(R.id.action_login);
+        if (null != SharedPreferencesUtil.getInstance().getString(Constant.NAME) && !"".equals(SharedPreferencesUtil.getInstance().getString(Constant.NAME))) {
+            menuItem.setTitle(SharedPreferencesUtil.getInstance().getString(Constant.NAME));
+
+        } else {
+            menuItem.setTitle("请登录");
+        }
         return true;
     }
 
@@ -203,18 +245,26 @@ public class MainActivity extends BaseActivity implements MainContract.View, Log
                 startActivity(new Intent(MainActivity.this, SearchActivity.class));
                 break;
             case R.id.action_login:
-                if (popupWindow == null) {
-                    popupWindow = new LoginPopupWindow(this);
-                    popupWindow.setLoginTypeListener(this);
+                //检查是否登录，如果登录了则跳转到个人信息页面，否则跳转登录
+                if (null != SharedPreferencesUtil.getInstance().getString(Constant.NAME) && !"".equals(SharedPreferencesUtil.getInstance().getString(Constant.NAME))) {
+                    //跳转到个人信息页面
+                    startActivity(new Intent(MainActivity.this, InformationActivity.class));
+                } else {
+                    if (popupWindow == null) {
+                        popupWindow = new LoginPopupWindow(this);
+                        popupWindow.setLoginTypeListener(this);
+                    }
+                    popupWindow.showAtLocation(mCommonToolbar, Gravity.CENTER, 0, 0);
                 }
-                popupWindow.showAtLocation(mCommonToolbar, Gravity.CENTER, 0, 0);
                 break;
             case R.id.action_my_message:
-                if (popupWindow == null) {
-                    popupWindow = new LoginPopupWindow(this);
-                    popupWindow.setLoginTypeListener(this);
+                //检查是否登录，如果登录了则跳转到消息页面，否则提示登录
+                if (null != SharedPreferencesUtil.getInstance().getString(Constant.NAME) && !"".equals(SharedPreferencesUtil.getInstance().getString(Constant.NAME))) {
+                    //跳转到个人信息页面
+                    startActivity(new Intent(MainActivity.this, MessageActivity.class));
+                } else {
+                    ToastUtils.showToast("请先登录");
                 }
-                popupWindow.showAtLocation(mCommonToolbar, Gravity.CENTER, 0, 0);
                 break;
             case R.id.action_sync_bookshelf:
                 showDialog();
@@ -277,6 +327,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, Log
      * @param menu
      * @return
      */
+    @SuppressLint("RestrictedApi")
     @Override
     protected boolean onPrepareOptionsPanel(View view, Menu menu) {
         if (menu != null) {
@@ -326,6 +377,13 @@ public class MainActivity extends BaseActivity implements MainContract.View, Log
 
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+
 
     public class BaseUIListener implements IUiListener {
 
@@ -336,7 +394,13 @@ public class MainActivity extends BaseActivity implements MainContract.View, Log
             Gson gson = new Gson();
             TencentLoginResult result = gson.fromJson(json, TencentLoginResult.class);
             LogUtils.e(result.toString());
-            mPresenter.login(result.openid, result.access_token, "QQ");
+//            mPresenter.login(result.openid, result.access_token, "QQ");
+
+            //设置openid和token，否则获取不到下面的信息
+            initOpenidAndToken(jsonObject);
+            //获取QQ用户的各信息
+            getUserInfo();
+
         }
 
         @Override
@@ -366,4 +430,98 @@ public class MainActivity extends BaseActivity implements MainContract.View, Log
             mPresenter.detachView();
         }
     }
+
+    private void initOpenidAndToken(JSONObject jsonObject) {
+        try {
+            String openid = jsonObject.getString("openid");
+            String token = jsonObject.getString("access_token");
+            String expires = jsonObject.getString("expires_in");
+
+            mTencent.setAccessToken(token, expires);
+            mTencent.setOpenId(openid);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void getUserInfo() {
+
+        //sdk给我们提供了一个类UserInfo，这个类中封装了QQ用户的一些信息，我么可以通过这个类拿到这些信息
+        QQToken mQQToken = mTencent.getQQToken();
+        UserInfo userInfo = new UserInfo(MainActivity.this, mQQToken);
+        userInfo.getUserInfo(new IUiListener() {
+                                 @Override
+                                 public void onComplete(final Object o) {
+                                     JSONObject userInfoJson = (JSONObject) o;
+                                     Message msgNick = new Message();
+                                     msgNick.what = 0;//昵称
+                                     try {
+                                         QQInformationBean qqInformationBean = new QQInformationBean();
+                                         qqInformationBean.setGender(userInfoJson.getString("gender"));
+                                         qqInformationBean.setProvince(userInfoJson.getString("province"));
+                                         qqInformationBean.setCity(userInfoJson.getString("city"));
+                                         qqInformationBean.setFigureurl_qq_1(userInfoJson.getString("figureurl_qq_1"));
+                                         qqInformationBean.setNickName(userInfoJson.getString("nickname"));
+                                         msgNick.obj = qqInformationBean;
+                                     } catch (JSONException e) {
+                                         e.printStackTrace();
+                                     }
+                                     mHandler.sendMessage(msgNick);
+                                     //子线程 获取并传递头像图片，由Handler更新
+                                     new Thread(new Runnable() {
+                                         @Override
+                                         public void run() {
+                                             Bitmap bitmapHead = null;
+                                             if (((JSONObject) o).has("figureurl")) {
+                                                 try {
+                                                     String headUrl = ((JSONObject) o).getString("figureurl_qq_2");
+                                                     bitmapHead = Util.getbitmap(headUrl);
+                                                 } catch (JSONException e) {
+                                                     e.printStackTrace();
+                                                 }
+                                                 Message msgHead = new Message();
+                                                 msgHead.what = 1;
+                                                 msgHead.obj = bitmapHead;
+                                                 mHandler.sendMessage(msgHead);
+                                             }
+                                         }
+                                     }).start();
+
+                                 }
+
+                                 @Override
+                                 public void onError(UiError uiError) {
+                                     Log.e("GET_QQ_INFO_ERROR", "获取qq用户信息错误");
+                                     Toast.makeText(MainActivity.this, "获取qq用户信息错误", Toast.LENGTH_SHORT).show();
+                                 }
+
+                                 @Override
+                                 public void onCancel() {
+                                     Log.e("GET_QQ_INFO_CANCEL", "获取qq用户信息取消");
+                                     Toast.makeText(MainActivity.this, "获取qq用户信息取消", Toast.LENGTH_SHORT).show();
+                                 }
+                             }
+        );
+    }
+
+    //显示获取到的头像和昵称
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (msg.what == 0) {//获取昵称
+//                tvNickName.setText((CharSequence) msg.obj);
+                QQInformationBean qqInformationBean = (QQInformationBean) msg.obj;
+                SharedPreferencesUtil.getInstance().putString(Constant.NAME, qqInformationBean.getNickName());
+                SharedPreferencesUtil.getInstance().putString(Constant.gender, qqInformationBean.getGender());
+                SharedPreferencesUtil.getInstance().putString(Constant.address, qqInformationBean.getProvince() + "  " + qqInformationBean.getCity());
+                SharedPreferencesUtil.getInstance().putString(Constant.headPicture, qqInformationBean.getFigureurl_qq_1());
+                ToastUtils.showToast("登录成功");
+                menuItem.setTitle(SharedPreferencesUtil.getInstance().getString(Constant.NAME));
+            } else if (msg.what == 1) {//获取头像
+//                headerLogo.setImageBitmap((Bitmap) msg.obj);
+            }
+        }
+    };
 }

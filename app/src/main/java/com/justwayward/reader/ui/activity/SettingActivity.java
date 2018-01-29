@@ -20,8 +20,11 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.SwitchCompat;
+import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.justwayward.reader.R;
@@ -35,12 +38,16 @@ import com.justwayward.reader.manager.SettingManager;
 import com.justwayward.reader.utils.SharedPreferencesUtil;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
  * Created by xiaoshu on 2016/10/8.
  */
 public class SettingActivity extends BaseActivity {
+
+    @BindView(R.id.signOut)
+    RelativeLayout signOut;
 
     public static void startActivity(Context context) {
         context.startActivity(new Intent(context, SettingActivity.class));
@@ -70,9 +77,27 @@ public class SettingActivity extends BaseActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //如果没有登录时隐藏退出登录按钮
+        if (null != SharedPreferencesUtil.getInstance().getString(Constant.NAME) && !"".equals(SharedPreferencesUtil.getInstance().getString(Constant.NAME))) {
+            signOut.setVisibility(View.VISIBLE);
+        } else {
+            signOut.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
     public void initToolBar() {
         mCommonToolbar.setTitle("设置");
         mCommonToolbar.setNavigationIcon(R.drawable.ab_back);
+
     }
 
     @Override
@@ -148,45 +173,83 @@ public class SettingActivity extends BaseActivity {
         FeedbackActivity.startActivity(this);
     }
 
-    @OnClick(R.id.cleanCache)
-    public void onClickCleanCache() {
-        //默认不勾选清空书架列表，防手抖！！
-        final boolean selected[] = {true, false};
-        new AlertDialog.Builder(mContext)
-                .setTitle("清除缓存")
-                .setCancelable(true)
-                .setMultiChoiceItems(new String[]{"删除阅读记录", "清空书架列表"}, selected, new DialogInterface.OnMultiChoiceClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                        selected[which] = isChecked;
-                    }
-                })
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        new Thread(new Runnable() {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+
+    @OnClick({R.id.cleanCache, R.id.signOut})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.cleanCache:
+                //默认不勾选清空书架列表，防手抖！！
+                final boolean selected[] = {true, false};
+                new AlertDialog.Builder(mContext)
+                        .setTitle("清除缓存")
+                        .setCancelable(true)
+                        .setMultiChoiceItems(new String[]{"删除阅读记录", "清空书架列表"}, selected, new DialogInterface.OnMultiChoiceClickListener() {
                             @Override
-                            public void run() {
-                                CacheManager.getInstance().clearCache(selected[0], selected[1]);
-                                final String cacheSize = CacheManager.getInstance().getCacheSize();
-                                runOnUiThread(new Runnable() {
+                            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                                selected[which] = isChecked;
+                            }
+                        })
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                new Thread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        mTvCacheSize.setText(cacheSize);
-                                        EventManager.refreshCollectionList();
+                                        CacheManager.getInstance().clearCache(selected[0], selected[1]);
+                                        final String cacheSize = CacheManager.getInstance().getCacheSize();
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                mTvCacheSize.setText(cacheSize);
+                                                EventManager.refreshCollectionList();
+                                            }
+                                        });
                                     }
-                                });
+                                }).start();
+                                dialog.dismiss();
                             }
-                        }).start();
-                        dialog.dismiss();
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .create().show();
+                break;
+            case R.id.signOut:
+                final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setTitle("退出登录");
+                builder.setCancelable(true);
+                builder.setMessage("确定要退出登录吗？");
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SharedPreferencesUtil.getInstance().putString(Constant.NAME, "");
+                        //如果没有登录时隐藏退出登录按钮
+                        if (null != SharedPreferencesUtil.getInstance().getString(Constant.NAME) && !"".equals(SharedPreferencesUtil.getInstance().getString(Constant.NAME))) {
+                            signOut.setVisibility(View.VISIBLE);
+                        } else {
+                            signOut.setVisibility(View.GONE);
+                        }
                     }
-                })
-                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                });
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
-                })
-                .create().show();
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                break;
+        }
     }
 }

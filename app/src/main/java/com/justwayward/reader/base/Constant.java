@@ -210,4 +210,9 @@ public class Constant {
         put(BookType.HXYQ, "幻想言情");
         put(BookType.DMTR, "耽美同人");
     }};
+    //QQ授权信息
+    public static String NAME = "NAME";
+    public static String gender = "gender";
+    public static String address = "address";
+    public static String headPicture = "headPicture";
 }

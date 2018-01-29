@@ -15,7 +15,9 @@
  */
 package com.justwayward.reader.component;
 
+import com.justwayward.reader.ui.activity.InformationActivity;
 import com.justwayward.reader.ui.activity.MainActivity;
+import com.justwayward.reader.ui.activity.MessageActivity;
 import com.justwayward.reader.ui.activity.SettingActivity;
 import com.justwayward.reader.ui.activity.WifiBookActivity;
 import com.justwayward.reader.ui.fragment.RecommendFragment;
@@ -29,5 +31,10 @@ public interface MainComponent {
     RecommendFragment inject(RecommendFragment fragment);
 
     SettingActivity inject(SettingActivity activity);
+
     WifiBookActivity inject(WifiBookActivity activity);
+
+    InformationActivity inject(InformationActivity activity);
+
+    MessageActivity inject(MessageActivity activity);
 }

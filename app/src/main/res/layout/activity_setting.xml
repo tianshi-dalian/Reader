@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2016 JustWayward Team
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -221,8 +220,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="30dp"
                     android:text="关于我们"
                     android:textColor="@color/common_h1" />
             </RelativeLayout>
@@ -241,7 +241,8 @@
                 android:layout_below="@+id/view_line_4"
                 android:background="@drawable/touch_bg"
                 android:clickable="true"
-                android:padding="@dimen/activity_vertical_margin">
+                android:padding="@dimen/activity_vertical_margin"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -249,7 +250,8 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:text="意见反馈"
-                    android:textColor="@color/common_h1" />
+                    android:textColor="@color/common_h1"
+                    android:visibility="gone" />
             </RelativeLayout>
 
             <View
@@ -286,6 +288,31 @@
                     android:drawableRight="@drawable/ic_next"
                     android:text="0.00M"
                     android:textColor="@color/common_h2" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view_line_7"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/cleanCache"
+                android:background="@color/common_divider_narrow" />
+
+            <RelativeLayout
+                android:id="@+id/signOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view_line_7"
+                android:background="@drawable/touch_bg"
+                android:clickable="true"
+                android:padding="@dimen/activity_vertical_margin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="退出登录"
+                    android:textColor="@color/common_h1" />
             </RelativeLayout>
         </RelativeLayout>
     </com.justwayward.reader.view.ReboundScrollView>
