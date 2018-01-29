@@ -1,0 +1,79 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\git\\BookReader\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "map": [
+                {
+                    "source": "D:\\git\\BookReader\\app\\src\\main\\res\\values-night\\colors.xml",
+                    "from": {
+                        "startLines": "22,18,20,25,37,39,29,31,33,35,27",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "880,712,779,947,1351,1427,1081,1153,1220,1287,1012",
+                        "endColumns": "45,46,55,43,55,53,48,43,43,43,49",
+                        "endOffsets": "921,754,830,986,1402,1476,1125,1192,1259,1326,1057"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,101,148,204,248,304,358,407,451,495,539",
+                        "endColumns": "45,46,55,43,55,53,48,43,43,43,49",
+                        "endOffsets": "96,143,199,243,299,353,402,446,490,534,584"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-23.4.0.aar\\57ad8ab82d1be78f3fc23e2ee00b804d\\res\\values-night-v8\\values-night-v8.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,125,209,293,389,491,593",
+                        "endColumns": "69,83,83,95,101,101,93",
+                        "endOffsets": "120,204,288,384,486,588,682"
+                    },
+                    "to": {
+                        "startLines": "23,24,25,26,27,28,29",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "1053,1123,1207,1291,1387,1489,1591",
+                        "endColumns": "69,83,83,95,101,101,93",
+                        "endOffsets": "1118,1202,1286,1382,1484,1586,1680"
+                    }
+                },
+                {
+                    "source": "D:\\git\\BookReader\\app\\src\\main\\res\\values-night\\strings.xml",
+                    "from": {
+                        "startLines": "17,18",
+                        "startColumns": "4,4",
+                        "startOffsets": "693,744",
+                        "endColumns": "49,53",
+                        "endOffsets": "738,793"
+                    },
+                    "to": {
+                        "startLines": "13,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "589,639",
+                        "endColumns": "49,53",
+                        "endOffsets": "634,688"
+                    }
+                },
+                {
+                    "source": "D:\\git\\BookReader\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "from": {
+                        "startLines": "18",
+                        "startColumns": "4",
+                        "startOffsets": "695",
+                        "endLines": "25",
+                        "endColumns": "12",
+                        "endOffsets": "1057"
+                    },
+                    "to": {
+                        "startLines": "15",
+                        "startColumns": "4",
+                        "startOffsets": "693",
+                        "endLines": "22",
+                        "endColumns": "12",
+                        "endOffsets": "1048"
+                    }
+                }
+            ]
+        }
+    ]
+}

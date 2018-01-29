@@ -1,0 +1,4 @@
+#Sun Jan 28 23:08:26 CST 2018
+base.0=D\:\\git\\BookReader\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\30
+path.0=classes.dex
+renamed.0=classes.dex
