@@ -1,17 +1,6 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
-
-    defaultConfig {
-        applicationId "com.justwayward.reader"
-        minSdkVersion 19
-        targetSdkVersion 19
-        versionCode 1
-        versionName "1.0"
-    }
-
     signingConfigs {
         release {
             storeFile file('D:/git/Reader/sign.jks')
@@ -19,6 +8,15 @@ android {
             keyAlias 'bookreader'
             keyPassword '123456'
         }
+    }
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+    defaultConfig {
+        applicationId "com.justwayward.reader"
+        minSdkVersion 19
+        targetSdkVersion 19
+        versionCode 1
+        versionName "1.0"
     }
 
     buildTypes {
@@ -33,18 +31,35 @@ android {
         }
     }
 
+    //多渠道打包
+    flavorDimensions "$defaultConfig.versionCode"
+    productFlavors {
+        xiaomi { dimension "$defaultConfig.versionCode" }
+        qh360 { dimension "$defaultConfig.versionCode" }
+        baidu { dimension "$defaultConfig.versionCode" }
+        yingyongbao { dimension "$defaultConfig.versionCode" }
+        oppo { dimension "$defaultConfig.versionCode" }
+        aliapp { dimension "$defaultConfig.versionCode" }
+        huawei { dimension "$defaultConfig.versionCode" }
+    }
+
+
+
+
+
+
     lintOptions {
         disable 'InvalidPackage'
     }
-
     packagingOptions {
         exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
-
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
         }
+    }
+    productFlavors {
     }
 }
 

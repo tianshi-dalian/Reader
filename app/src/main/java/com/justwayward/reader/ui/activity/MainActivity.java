@@ -358,10 +358,10 @@ public class MainActivity extends BaseActivity implements MainContract.View, Log
     @Override
     public void onLogin(ImageView view, String type) {
         if (type.equals("QQ")) {
-            if (!mTencent.isSessionValid()) {
+//            if (!mTencent.isSessionValid()) {
                 if (loginListener == null) loginListener = new BaseUIListener();
                 mTencent.login(this, "all", loginListener);
-            }
+//            }
         }
         //4f45e920ff5d1a0e29d997986cd97181
     }

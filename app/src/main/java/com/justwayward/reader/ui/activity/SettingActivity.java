@@ -233,12 +233,8 @@ public class SettingActivity extends BaseActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         SharedPreferencesUtil.getInstance().putString(Constant.NAME, "");
-                        //如果没有登录时隐藏退出登录按钮
-                        if (null != SharedPreferencesUtil.getInstance().getString(Constant.NAME) && !"".equals(SharedPreferencesUtil.getInstance().getString(Constant.NAME))) {
-                            signOut.setVisibility(View.VISIBLE);
-                        } else {
-                            signOut.setVisibility(View.GONE);
-                        }
+                        Intent intent = new Intent(SettingActivity.this, MainActivity.class);
+                        startActivity(intent);
                     }
                 });
                 builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {

@@ -45,7 +45,7 @@
         <!-- 字体大小-->
         <item name="android:textSize">16sp</item>
         <!-- 用于替换菜单的三个小白点，换成自已的图片-->
-        <item name="actionOverflowButtonStyle">@style/ActionButton.Overflow.Menu</item>
+        <!--<item name="actionOverflowButtonStyle">@style/ActionButton.Overflow.Menu</item>-->
         <!--用于控制menu弹出的位置，位于toolbar的下面，而不是上面-->
         <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
         <!-- 用于修改item默认的分割线-->

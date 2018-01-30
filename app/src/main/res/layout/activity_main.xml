@@ -26,7 +26,7 @@
         android:id="@+id/indicator"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="@color/green"
+        android:background="@color/light_black"
         android:orientation="horizontal"
         rvp:indicator_color="@color/common_bg"
         rvp:indicator_style="triangle"
