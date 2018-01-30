@@ -30,7 +30,7 @@ public class TTSPlayerUtils {
         TTSPlayer mTtsPlayer = new TTSPlayer();
         TtsInitParam ttsInitParam = new TtsInitParam();
         ttsInitParam.addParam(TtsInitParam.PARAM_KEY_FILE_FLAG, "none");
-        mTtsPlayer.init(ttsInitParam.getStringConfig(), new TTSEventProcess());
+//        mTtsPlayer.init(ttsInitParam.getStringConfig(), new TTSEventProcess());
         return mTtsPlayer;
     }
 
